@@ -1,7 +1,8 @@
-namespace Farmacia.API.Entidades
+
+namespace Farmacia.API.Domain.Entities
 {
     public class Endereco
-    {
+    {      
         public int IdEndereco { get; set; }
         public string Logradouro { get; set; } 
         public string Complemento { get; set; }

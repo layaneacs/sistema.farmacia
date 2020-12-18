@@ -1,7 +1,10 @@
-namespace Farmacia.API.Entidades
+using System.ComponentModel.DataAnnotations;
+
+namespace Farmacia.API.Domain.Entities
 {
     public class Usuario
     {
+        [Key]
         public int IdUsuario { get; set; }
         public int IdContato { get; set; }
         public string Login { get; set; }

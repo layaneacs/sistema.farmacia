@@ -1,7 +1,10 @@
-namespace Farmacia.API.Entidades
+using System.ComponentModel.DataAnnotations;
+
+namespace Farmacia.API.Domain.Entities
 {
     public class Medicamento //-- ok
     {
+        [Key]
         public int IdMedicamento { get; set; }
 
         public string Nome { get; set; }

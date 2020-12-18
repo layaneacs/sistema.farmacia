@@ -2,10 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Farmacia.API.Domain.Interfaces;
+using Farmacia.API.Infra.Persistence;
+using Farmacia.API.Infra.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,7 +32,11 @@ namespace Farmacia.API
         {
             services.AddSwaggerGen(c => 
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Farma RL API" , Version = "v1"}));
-
+            
+            services.AddScoped<ICliente, ClienteRepository>();
+            services.AddDbContext<EFContext>(options =>
+                options.UseInMemoryDatabase("name"));
+            
             services.AddControllers();
         }
 
