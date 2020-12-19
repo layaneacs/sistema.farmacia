@@ -31,9 +31,10 @@ namespace Farmacia.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerGen(c => 
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Farma RL API" , Version = "v1"}));
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Farmacia API" , Version = "v1"}));
             
             services.AddScoped<ICliente, ClienteRepository>();
+            
             services.AddDbContext<EFContext>(options =>
                 options.UseInMemoryDatabase("name"));
             
@@ -44,8 +45,11 @@ namespace Farmacia.API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();
-            app.UseSwaggerUI(c => 
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Farma RL API"));
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Farmacia API");
+                c.RoutePrefix = String.Empty;
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -5,8 +5,7 @@ using Farmacia.API.Enums;
 namespace Farmacia.API.Domain.Entities
 {
     public class PessoaFisica //-- ok
-    {
-        [Key]
+    {        
         public int IdPessoaFisica { get; set; }
 
         public int IdPessoa { get; set; }
